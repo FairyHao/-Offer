@@ -1,0 +1,41 @@
+//请实现一个函数，将一个字符串中的空格替换成“%20”。例如，当字符串为We Are Happy.则经过替换之后的字符串为We%20Are%20Happy。
+//缺点：空间消耗大。
+class Solution {
+public:
+//数组的长度是固定不可变的。
+	void replaceSpace(char *str,int length) {
+        if(!str||length==0)
+        {
+            return;
+        }
+        char *p = str;
+        int newlength = 1;
+        string s;
+        while(*p!= '\0')
+        {
+            if((*p)==' ')
+            {
+                s += "%20";   
+                newlength += 2;
+            }else
+            {
+                s += (*p);
+            }
+            p++;
+        }
+        //如果新长度过大，则不能替换。
+       if(newlength>=length)
+       {
+           return;
+       } 
+       //将新的string赋值到原来的地址
+        const char *str1 = s.c_str();
+        while(*str1!='\0')
+        {
+            *str = *str1;
+            str++;
+            str1++;
+        }
+        (*str) = '\0';
+    }
+};
