@@ -1,0 +1,34 @@
+//输入一个链表，从尾到头打印链表每个节点的值。
+/**
+*  struct ListNode {
+*        int val;
+*        struct ListNode *next;
+*        ListNode(int x) :
+*              val(x), next(NULL) {
+*        }
+*  };
+*/
+class Solution {
+public:
+    vector<int> printListFromTailToHead(ListNode* head) {
+        vector<int> result;
+        if(!head)
+         {
+             return result;
+         }
+        stack<int> sta;
+        ListNode* p = head;
+        while(p)
+        {
+            sta.push(p->val);
+            p = p->next;
+        }
+           while(!sta.empty())
+        {
+            int x = sta.top();
+            sta.pop();
+            result.push_back(x);
+        } 
+        return result;
+    }
+};
